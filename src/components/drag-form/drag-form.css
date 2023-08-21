@@ -1,0 +1,22 @@
+
+.sidebar {
+    background-color: #f3f9f3;
+    height: 100vh;
+    transition: width 0.3s ease-in-out;
+}
+
+.design-panel {
+    background-color: #f4fff4;
+    height: 100vh;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.collapsed {
+    width: 0 !important;
+}
+
+
+/*灰色虚线边框*/
+.carota-border {
+    border: 1px dashed gray;
+}

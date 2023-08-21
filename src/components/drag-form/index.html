@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="./drag-form.css">
+<link rel="stylesheet" href="../../../public/assets/styles/main.css">
+<script src="../../utils/strUtil.js"></script>
+<script src="../../domain/carotaEnum.js"></script>
+<script src="../../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="./drag-form.js"></script>
+
+<!-- 表单设计器按钮 -->
+<button type="button" class="btn btn-dark align-self-center" data-bs-toggle="modal" data-bs-target="#designModal">
+    表单设计
+</button>
+
+<!-- 表单设计器 modal -->
+<div class="modal fade" id="designModal" tabindex="-1" aria-labelledby="designModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <!-- modal内容 -->
+            <div class="modal-body">
+                <!-- 标题 -->
+                <div class="row">
+                    <div class="col">
+                        <h1 class="modal-title fs-5" id="designModalLabel"></h1>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-link btn-link-self">清空</button>
+                        <button type="button" class="btn btn-link btn-link-self">预览</button>
+                        <button type="button" class="btn btn-link btn-link-self">预览</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- 组件栏 -->
+                    <div class="col-2 sidebar carota-border">
+                        <div class="screen">
+                            <!-- 第一个屏幕的内容 -->
+                            <h1>组件栏</h1>
+                        </div>
+                    </div>
+                    <!-- 设计栏 -->
+                    <div class="col-8 design-panel carota-border">
+                        <div class="screen">
+                            <!-- 第二个屏幕的内容 -->
+                            <h1>设计栏</h1>
+                        </div>
+                    </div>
+                    <!-- 属性栏 -->
+                    <div class="col-2 sidebar carota-border">
+                        <div class="screen">
+                            <!-- 第三个屏幕的内容 -->
+                            <h1>属性栏</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let modalTitle = '新建表单'
+    let data = {
+        model: designModel.NEW,
+        title:''
+    }
+
+    // 监听设计页面展示事件
+    document.getElementById('designModal').addEventListener('show.bs.modal',event=>{
+        if (designModel.NEW !== data.model){
+            modalTitle = data.title;    // 如果不是新建表单,替换标题
+        }
+        document.getElementById('designModalLabel').textContent  = modalTitle;  // 设置modal标题
+    })
+
+    function cancelButton() {
+        console.log("cancel")
+        // 发送返回值
+        allEvent.source.postMessage("你好", allEvent.origin);
+    }
+
+    /**
+     * 隐藏按钮
+     */
+    function toggleSidebars() {
+        const sidebars = document.querySelectorAll('.sidebar');
+        const designPanel = document.querySelector('.design-panel');
+
+        sidebars.forEach(sidebar => sidebar.classList.toggle('collapsed'));
+        designPanel.classList.toggle('col');
+        designPanel.classList.toggle('col-8');
+    }
+</script>
