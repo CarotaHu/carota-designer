@@ -11,12 +11,32 @@
     transition: margin-left 0.3s ease-in-out;
 }
 
-.collapsed {
-    width: 0 !important;
-}
-
-
 /*灰色虚线边框*/
 .carota-border {
     border: 1px dashed gray;
+    padding: 0;
+}
+
+.btn-carota{
+    font-size: 0.7rem !important;
+}
+
+.designer-title-carota{
+    height: 30px;
+}
+.sidebar-carota{
+    width: calc(15vw - 14px) !important;
+    height: calc(100vh - 35px);
+}
+
+.design-panel-carota{
+    width: calc(70vw) !important;
+    height: calc(100vh - 35px);
+    padding: 0;
+}
+
+#design-panel-sortable{
+    height: 100%;
+    margin: 2px;
+    padding: 5px;
 }
